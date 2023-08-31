@@ -17,16 +17,10 @@ public class RedesController {
 		return osName;
 	}
 	
-	//Tive que criar essa public, já que não consigo chamar a private pelo main.
-	public String getOs() {
-		return os();
-	}
-	
-	
 	
 	public String ip() {
 		
-		String osName = getOs();
+		String osName = os();
 		
 		String ip = "";
 		
@@ -57,7 +51,7 @@ public class RedesController {
 			
 		} catch (IOException e) {
 			
-			System.err.println(e);
+			System.err.println(e.getMessage());
 		}
 		
 		return null;
@@ -65,7 +59,7 @@ public class RedesController {
 	
 	public String ping() {
 		
-		String osName = getOs();
+		String osName = os();
 		
 		String ping = "";
 		
@@ -85,19 +79,14 @@ public class RedesController {
 			
 			String pLinha = pBuffer.readLine();
 			while (pLinha != null) {
-				
-				if (pLinha.contains("nimo")) {
-					//Foi o único jeito que achei para funcionar, já que as letras "í, á, é" não aparecem
-					pingResult = pLinha;
-				}
-				
+				pingResult = pLinha;
 				pLinha = pBuffer.readLine();
 			}
 			JOptionPane.showMessageDialog(null, pingResult);
 			
 		} catch (IOException e) {
 			
-			System.err.println(e);
+			System.err.println(e.getMessage());
 		}
 		
 		return null;
